@@ -1,6 +1,6 @@
 <?php
 require 'dbconfig.php';
-
+// Fetch grocery items with categories, suppliers, and inventory quantities
 try {
     $sql = "
         SELECT gi.item_id, gi.item_name, c.category_name, s.supplier_name, gi.price, gi.unit, i.quantity
@@ -10,10 +10,10 @@ try {
         LEFT JOIN inventory i ON gi.item_id = i.item_id
         ORDER BY gi.item_name ASC
     ";
-    $stmt = $pdo->query($sql);
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $pdo->query($sql); // Execute the query
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows as associative arrays
 } catch (PDOException $e) {
-    die("PDO Error: " . $e->getMessage());
+    die("PDO Error: " . $e->getMessage()); // Handle any PDO exceptions
 }
 ?>
 
@@ -54,4 +54,5 @@ try {
     <?php endforeach; ?>
 </table>
 </body>
+
 </html>
