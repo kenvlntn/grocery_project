@@ -1,5 +1,5 @@
 <?php
-// complex_report.php
+// shows total items sold per category with supplier and promo details
 require 'dbconfig.php';
 
 $sql = "SELECT c.category_name,
@@ -52,3 +52,4 @@ $rows = $stmt->fetchAll();
 </table>
 </body>
 </html>
+
